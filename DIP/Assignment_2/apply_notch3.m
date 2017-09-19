@@ -9,11 +9,11 @@ y0=floor(r/2);
 a = fft2(img);
 
 a = fftshift(a);
-figure,imshow(a);
+% figure,imshow(a);
 fil = zeros(size(a));
 
-x1 = 136; y1=80;
-x2 = 172; y2=80;
+x1 = 80; y1=128;
+x2 = 176; y2=128;
 x3 = 150; y3=178;
 x4 = 186; y4=178;
 
@@ -27,7 +27,7 @@ for z=1:ch
             dist3 = ((x3-x)^2+(y3-y)^2)^0.5;
             dist4 = ((x4-x)^2+(y4-y)^2)^0.5;
             
-            if dist1 < cutoff || dist2 < cutoff || dist3 < cutoff || dist4 < cutoff
+            if dist >=16 && ( (y<(r/2 + 5) && y>(r/2 - 5)) || (x<(c/2 + 5) && x>(c/2 - 5)) )
                 val = 0;
             else
                 val=1;
@@ -48,7 +48,7 @@ end
 a = a.*fil;
 
 % figure,imshow(fil);
-figure,imshow(a);
+% figure,imshow(a);
 a = ifftshift(a);
 img_notch = ifft2(a);
 

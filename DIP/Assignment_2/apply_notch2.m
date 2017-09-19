@@ -9,7 +9,7 @@ y0=floor(r/2);
 a = fft2(img);
 
 a = fftshift(a);
-figure,imshow(a);
+% figure,imshow(a);
 fil = zeros(size(a));
 
 x1 = 23; y1=90;
@@ -27,7 +27,16 @@ for z=1:ch
             dist3 = ((x3-x)^2+(y3-y)^2)^0.5;
             dist4 = ((x4-x)^2+(y4-y)^2)^0.5;
             
-            if dist1 < cutoff || dist2 < cutoff || dist3 < cutoff || dist4 < cutoff
+            if dist1 < cutoff || dist2 < cutoff || dist3 < cutoff || dist4 < cutoff...
+                    || (dist >=15 && (x<(c/2 + 2) && x>=(c/2 - 2)) )...
+                    || (dist >=15 && (y<(r/2 + 2) && y>=(r/2 - 2)) )...
+                    || (y<r/2 && (((x < x1+2) && (x >= x1-2)) || ((x < x2+2) && (x >= x2-2))))...
+                    || (y>=r/2 && (((x < x3+2) && (x >= x3-2)) || ((x < x4+2) && (x >= x4-2))))...
+                    || (x<c/2 && (((y < y1+2) && (y >= y1-2)) || ((y < y2+2) && (y >= y2-2))))...
+                    || (x>=c/2 && (((y < y3+2) && (y >= y3-2)) || ((y < y4+2) && (y >= y4-2))))...
+                    || (x>=c/2 && y>=r/2 && dist>=20) || (x<c/2 && y<r/2 && dist>=20)
+                
+                
                 val = 0;
             else
                 val=1;
