@@ -1,0 +1,28 @@
+function img_nn = nn( img, scale )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+[r,c,ch] = size(img);
+img_nn = zeros(scale*r,scale*c,ch);
+
+% img_nn = expand_img(img,scale);
+
+del_0 = floor(scale/2);
+del_1 = ceil(scale/2);
+
+for z=1:ch
+    for x=1:c
+        x_n1 = x*scale + del_0;
+        x_n0 = x*scale - del_1;
+        for y=1:r
+            y_n1 = y*scale;
+            y_n0 = (y-1)*scale + 1;
+            
+            img_nn(y_n0:y_n1,x_n0:x_n1,z) = img(y,x,z);            
+        end
+    end
+end
+
+
+end
+
