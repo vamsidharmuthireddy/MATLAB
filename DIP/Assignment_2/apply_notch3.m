@@ -9,7 +9,7 @@ y0=floor(r/2);
 a = fft2(img);
 
 a = fftshift(a);
-% figure,imshow(a);
+figure,imshow(a);
 fil = zeros(size(a));
 
 x1 = 80; y1=128;
@@ -47,7 +47,7 @@ end
 
 a = a.*fil;
 
-% figure,imshow(fil);
+figure,imshow(fil);
 % figure,imshow(a);
 a = ifftshift(a);
 img_notch = ifft2(a);

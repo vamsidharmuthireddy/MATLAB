@@ -51,7 +51,7 @@ end
 
 a = a.*fil;
 
-% figure,imshow(fil);
+figure,imshow(fil);
 figure,imshow(a);
 a = ifftshift(a);
 img_notch = ifft2(a);
