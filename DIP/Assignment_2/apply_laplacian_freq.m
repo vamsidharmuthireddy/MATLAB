@@ -15,9 +15,10 @@ fil = zeros(size(img_f));
 for z=1:ch
     for x=1:c
         for y=1:r
-            dist = ((x0-x)^2+(y0-y)^2)^0.5;
-            coeff = ((x0-x)^2 + (y0-y)^2 - 2*cutoff^2)/cutoff^4;
-            val = coeff * exp(-dist^2/(2*cutoff^2));
+            dist = (x0-x)^2+(y0-y)^2;
+%             coeff = ((x0-x)^2 + (y0-y)^2 - 2*cutoff^2)/cutoff^4;
+%             val = coeff * exp(-dist^2/(2*cutoff^2));
+            val = 4*(pi^2)*dist^2;
             
             fil(y,x,z) = val;
             
@@ -25,9 +26,11 @@ for z=1:ch
     end
 end
 
+fil = fil/max(fil(:));
 figure,imshow(fil);
 
 img_f = img_f .*fil;
+figure,imshow(img_f);
 
 img_laplacian = ifftshift(img_f);
 img_laplacian = ifft2(img_laplacian);

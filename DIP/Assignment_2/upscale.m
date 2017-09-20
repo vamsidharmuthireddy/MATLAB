@@ -3,10 +3,9 @@ function out = upscale(img)
 
 out = zeros([2*r, 2*c, ch]);
 out(1:2:2*r,1:2:2*c,:) = img;
-out = apply_gaussian(out,5,2);
+out = apply_gaussian(out,5,1);
 
-% ker = generating_kernel(0.4);
-% out = imfilter(out, ker, 'conv');
+% out = imgaussfilt(out,1,'FilterSize',5);
 
 out = 4*out;
 end

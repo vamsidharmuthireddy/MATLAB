@@ -1,5 +1,9 @@
-img = imread('Assign2_imgs/other_images/yellowlily.jpg');
-% imshow(img);
+close all;
+clear all;
+clc;
+
+img = imread('Assign2_imgs/other_images/saturn.png');
+imshow(img);
 
 img = im2double(img);
 

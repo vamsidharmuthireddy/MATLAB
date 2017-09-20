@@ -6,7 +6,7 @@ half_size = floor(filter_size/2);
 gaussian_filter = exp(-( x.^2 + y.^2 )./(2 * sigma));
 gaussian_filter = (1/sum(gaussian_filter(:))).*gaussian_filter;
 
-result = conv_filter(image,gaussian_filter);
+result = conv_filter(image,gaussian_filter,filter_size);
 
 end
 
@@ -26,8 +26,9 @@ for z=1:ch
             y_max = min(y+half_size,r);
             
             img_sub = zeros([2*half_size+1,2*half_size+1]);
-            xx=1;yy=1;
+            xx=1;
             for j=x_min:x_max
+                yy=1;
                 for k=y_min:y_max
                     
                     if j<1 || k<1
@@ -35,7 +36,7 @@ for z=1:ch
                     elseif j>c || k>r
                         img_sub(yy,xx)=0;
                     else
-                        img_sub(yy,xx)=img(k,j,ch);
+                        img_sub(yy,xx)=img(k,j,z);
                     end
                     yy = yy+1;
                 end

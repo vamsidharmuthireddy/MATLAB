@@ -9,8 +9,8 @@ img_blend = zeros([r,c,ch]);
 [gauss_pyr2,lap_pyr2] = get_pyramid(img2,level);
 [gauss_pyr3,lap_pyr3] = get_pyramid(mask,level);
 
-% out = img1.*mask + img2.*(1-mask);
-% imshow(out);
+out = img1.*mask + img2.*(1-mask);
+imshow(out);
 
 base_img = lap_pyr1{level+1}.*gauss_pyr3{level+1} + ...
                 lap_pyr2{level+1}.*(1-gauss_pyr3{level+1});
