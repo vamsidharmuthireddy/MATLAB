@@ -2,9 +2,9 @@ clear;
 clc;
 close all;
 
-adrs1 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example2/im1.jpg';
-adrs2 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example2/im2.jpg';
-adrs3 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example2/mask.png';
+adrs1 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example1/im1.jpg';
+adrs2 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example1/im2.jpg';
+adrs3 = 'Assign2_imgs/image_blending_with_laplacian_pyramid/example1/mask.jpg';
 
 img1 = imread(adrs1);   %foreground....object of interest
 img1 = im2double(img1); %background....background of interest
@@ -26,9 +26,10 @@ pyr_level = floor(log(min_size) / log(2)) - 4;
 % pyr_level = 4;
 
 img_blend = blend(img1,img2,mask,pyr_level);
-% for i=1:pyr_level+1
-%     figure,imshow(img_blend{i});
-% end
+for i=1:pyr_level+1
+    figure,imshow(img_blend{i});
+    imwrite(img_blend{i},strcat('blend_',num2str(i),'.jpg'));
+end
 img_out = img_blend{1};
-figure,imshow(img_out);
+% figure,imshow(img_out);
 
