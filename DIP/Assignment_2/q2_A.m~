@@ -28,7 +28,7 @@ for z=1:ch
     end
 end
 
-figure,imshow(img_fft./abs(img_fft));
+figure,imshow(img)
 
 
 

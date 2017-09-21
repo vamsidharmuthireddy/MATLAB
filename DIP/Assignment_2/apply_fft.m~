@@ -4,7 +4,7 @@ function val = apply_fft( fx )
 n=size(fx,2);
 x = 1:1:n;
 
-if n>2
+if n>1
     
 
     x_o = 1:2:n;
@@ -14,25 +14,17 @@ if n>2
     i_o = fx(x_o);
     i_e = apply_fft(i_e);
     i_o = apply_fft(i_o);
-    factor = fac(x,n);
+    factor = exp(-2j * pi * x / n);
     
     val = [i_e + factor(1:floor(n/2)) .* i_o, i_o + factor(floor(n/2)+1:n) .* i_e];
 else
-    
-    x_o = 2;
-    x_e = 1;
-
-    i_e = fx(x_e);
-    i_o = fx(x_o);
-    factor = fac(x,n);
-
-    val = [i_e + factor(1:floor(n/2)) .* i_o, i_o + factor(floor(n/2)+1:n) .* i_e];
-
+    factor = exp(-2j * pi * x / n);
+    val=factor(1:floor(n/2)) .* fx(1);
 end
 
        
 end
 
-function factor = fac(x,n)
-    factor = exp(-2j * pi * x / n);
+function fac = factor()
+    fac = 
 end
