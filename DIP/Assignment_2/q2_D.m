@@ -1,5 +1,5 @@
 close all;
-clear
+clear all;
 clc
 img1 = imread('Assign2_imgs/notch_pass_reject_filter/notch1.png');
 img2 = imread('Assign2_imgs/notch_pass_reject_filter/notch2.jpg');

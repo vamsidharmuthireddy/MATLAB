@@ -22,7 +22,7 @@ figure,imshow(img_nn);
 imwrite(img_nn,strcat('upscale_nn',num2str(1),'.jpg'));
 
 img_lin = lin(img,scale,'col');
-% img_lin = lin(img_lin,scale,'row');
+img_lin = lin(img_lin,scale,'row');
 figure,imshow(img_lin)
 imwrite(img_lin,strcat('upscale_lin',num2str(1),'.jpg'));
 
